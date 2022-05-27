@@ -25,5 +25,5 @@ version = "0.2.81"
 [build-dependencies.bindgen]
 version = "0.56.0"
 
-[build-dependencies.cmake]
-version = "0.1"
+#[build-dependencies.cmake]
+#version = "0.1"

@@ -26,6 +26,7 @@ version = "0.5.1"
 version = "0.2.81"
 
 [dependencies.lightgbm-sys]
+path = "./lightgbm-sys"
 version = "0.3.0"
 
 [dependencies.serde_json]
