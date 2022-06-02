@@ -52,17 +52,19 @@ fn main() {
    //     .build();
 
     // bindgen build
-    let bindings = bindgen::Builder::default()
-        .header("wrapper.h")
-        .clang_args(&["-x", "c++", "-std=c++11"])
-        .clang_arg(format!("-I{}", Path::new(&out_dir).join("deps").join("include").display()))
-        .clang_arg(format!("-I{}", lgbm_root.join("include").display()))
-        .generate()
-        .expect("Unable to generate bindings");
+    let bindings = include_str!("deps/bindings.rs");
+// let bindings = bindgen::Builder::default()
+//        .header("wrapper.h")
+//        .clang_args(&["-x", "c++", "-std=c++11"])
+//        .clang_arg(format!("-I{}", Path::new(&out_dir).join("deps").join("include").display()))
+//        .clang_arg(format!("-I{}", lgbm_root.join("include").display()))
+//        .generate()
+//        .expect("Unable to generate bindings");
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-    bindings
-        .write_to_file(out_path.join("bindings.rs"))
-        .expect("Couldn't write bindings.");
+    std::fs::write(out_path.join("bindings.rs"), bindings.as_bytes()).unwrap();
+ //   bindings
+ //   .write_to_file(out_path.join("bindings.rs"))
+ //       .expect("Couldn't write bindings.");
 
     // link to appropriate C++ lib
     if target.contains("apple") {
