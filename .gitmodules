@@ -1,3 +1,4 @@
 [submodule "lightgbm-sys/lightgbm"]
 	path = lightgbm-sys/lightgbm
-	url = https://github.com/andreclaudino/LightGBM.git
+	url = http://gitlab.baidu.com/mesatee2/lightgbm_src.git
+	branch = v3.2.1
